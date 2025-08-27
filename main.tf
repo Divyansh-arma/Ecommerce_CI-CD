@@ -61,8 +61,8 @@ module "rds" {
 
   # Security Configuration - Allow access from EC2 and EB instances
   allowed_security_groups = [
-    module.ec2.security_group_id
-    # module.eb.security_group_id  # Add when EB module outputs security group
+    module.ec2.security_group_id,
+    module.eb.security_group_id
   ]
 
   # Database Configuration
