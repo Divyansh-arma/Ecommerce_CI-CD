@@ -43,5 +43,5 @@ variable "subnet_ids" {
 variable "s3_access_policy_arn" {
   description = "ARN of the S3 access policy to attach to Elastic Beanstalk instance role"
   type        = string
-  default     = ""
+  default     = "null"
 }

@@ -2,8 +2,8 @@
 
 # VPC Module
 module "vpc" {
-  source          = "./modules/vpc"
-  vpc_id          = module.vpc.vpc_id
+  source = "./modules/vpc"
+  # vpc_id          = module.vpc.vpc_id
   vpc_name        = var.vpc_name
   vpc_cidr        = var.vpc_cidr
   public_subnets  = var.public_subnets
@@ -14,13 +14,13 @@ module "vpc" {
 
 # EC2 Module
 module "ec2" {
-  source = "./modules/ec2"
-  access_key = var.access_key
-  secret_key = var.secret_key
+  source          = "./modules/ec2"
+  access_key      = var.access_key
+  secret_key      = var.secret_key
   instance_name   = var.instance_name
   instance_type   = var.instance_type
   key_name        = var.key_name
-  public_key_path = "/Users/divyansh/Documents/DevOps/devops projects/E-commerce_CI-CD/ec2_key.pub"
+  public_key_path = "/Users/divyansh/Documents/DevOps/Pem-Keys/Ecommerce-keys/ec2-key.pub"
   subnet_id       = module.vpc.public_subnets[0]
   vpc_id          = module.vpc.vpc_id
 

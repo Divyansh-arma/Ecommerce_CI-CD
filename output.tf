@@ -11,6 +11,11 @@ output "private_subnets" {
   value       = module.vpc.private_subnets
 }
 
+output "vpc_id" {
+  description = "ID of the VPC"
+  value       = module.vpc.vpc_id
+}
+
 # EC2 Outputs
 output "ec2_instance_id" {
   description = "ID of the EC2 instance"

@@ -65,6 +65,12 @@ variable "engine_version" {
   default     = "8.0"
 }
 
+variable "major_engine_version" {
+  description = "MySQL major engine version"
+  type        = string
+  default     = "8"
+}
+
 variable "tags" {
   description = "Tags to apply to RDS resources"
   type        = map(string)

@@ -16,7 +16,8 @@ module "db" {
 
   # Engine configuration
   engine               = "mysql"
-  engine_version       = var.engine_version
+  major_engine_version = var.major_engine_version
+  engine_version      = var.engine_version
   instance_class       = var.instance_class
   
   # Storage configuration
@@ -57,7 +58,7 @@ module "db" {
   monitoring_role_name   = "${var.db_identifier}-RDSMonitoringRole"
   create_monitoring_role = true
   
-  enabled_cloudwatch_logs_exports = ["error", "general", "slow_query"]
+  enabled_cloudwatch_logs_exports = ["error", "general", "slowquery"]
 
   # Performance Insights
   performance_insights_enabled = true

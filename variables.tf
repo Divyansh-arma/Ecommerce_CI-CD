@@ -35,11 +35,11 @@ variable "vpc_name" {
   default     = "ecommerce-vpc"
 }
 
-variable "vpc_id" {
-  description = "VPC ID where the security group will be created"
-  type        = string
+# variable "vpc_id" {
+#   description = "VPC ID where the security group will be created"
+#   type        = string
 
-}
+# }
 
 variable "vpc_cidr" {
   description = "CIDR block for VPC"

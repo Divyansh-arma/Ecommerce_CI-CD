@@ -33,7 +33,8 @@ resource "aws_iam_role_policy_attachment" "eb_worker_tier" {
 
 # Attach S3 access policy to Elastic Beanstalk instance role
 resource "aws_iam_role_policy_attachment" "eb_s3_access" {
-  count      = var.s3_access_policy_arn != "" ? 1 : 0
+  for_each   = var.s3_access_policy_arn != null && var.s3_access_policy_arn != "" ? toset(["attach"]) : toset([])
+  #count      = length(trimspace(var.s3_access_policy_arn)) > 0 ? 1 : 0
   role       = aws_iam_role.eb_instance_role.name
   policy_arn = var.s3_access_policy_arn
 }
