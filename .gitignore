@@ -11,3 +11,4 @@ override.tf.json
 *.tfvars
 *.tfvars.json
 .DS_Store
+modules/.DS_Store
