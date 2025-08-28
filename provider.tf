@@ -13,8 +13,8 @@ terraform {
 # AWS Provider configuration
 provider "aws" {
   region = var.aws_region
-  access_key = "AKIARPY3JNCO2Z5VFOX5"
-  secret_key = "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"
+  access_key = var.access_key
+  secret_key = var.secret_key
 
   default_tags {
     tags = {

@@ -1,5 +1,5 @@
 # Root variables for the entire infrastructure
-
+# EC2 Module Variables
 variable "aws_region" {
   description = "AWS region for resources"
   type        = string
@@ -16,6 +16,16 @@ variable "project_name" {
   description = "Name of the project"
   type        = string
   default     = "e-commerce"
+}
+
+variable "access_key" {
+  description = "Access key for AWS account"
+  type        = string
+}
+
+variable "secret_key" {
+  description = "Secret key for AWS account"
+  type        = string
 }
 
 # VPC Variables

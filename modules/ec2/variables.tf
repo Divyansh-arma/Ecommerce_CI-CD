@@ -37,3 +37,13 @@ variable "tags" {
   type        = map(string)
   default     = {}
 }
+
+variable "access_key" {
+  description = "Access key for AWS account"
+  type        = string
+}
+
+variable "secret_key" {
+  description = "Secret key for AWS account"
+  type        = string
+}

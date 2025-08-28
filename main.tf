@@ -15,7 +15,8 @@ module "vpc" {
 # EC2 Module
 module "ec2" {
   source = "./modules/ec2"
-
+  access_key = var.access_key
+  secret_key = var.secret_key
   instance_name   = var.instance_name
   instance_type   = var.instance_type
   key_name        = var.key_name
