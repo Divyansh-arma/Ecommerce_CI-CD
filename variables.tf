@@ -35,12 +35,6 @@ variable "vpc_name" {
   default     = "ecommerce-vpc"
 }
 
-# variable "vpc_id" {
-#   description = "VPC ID where the security group will be created"
-#   type        = string
-
-# }
-
 variable "vpc_cidr" {
   description = "CIDR block for VPC"
   type        = string
@@ -82,7 +76,7 @@ variable "key_name" {
 variable "bucket_name" {
   description = "Name of the S3 bucket for static files"
   type        = string
-  default     = "myapp-bucket"
+  default     = "ecommerce-bucket"
 }
 
 # Common Tags Variable
