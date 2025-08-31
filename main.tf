@@ -52,7 +52,7 @@ module "eb" {
   public_subnets                   = module.vpc.public_subnets
   private_subnets                  = module.vpc.private_subnets
   s3_access_policy_arn             = module.s3.s3_access_policy_arn
-  aws_s3_object_key = module.s3.aws_s3_object_key
+  aws_s3_object_key                = module.s3.aws_s3_object_key
   tags                             = var.common_tags
   depends_on                       = [module.vpc, module.s3]
 }
