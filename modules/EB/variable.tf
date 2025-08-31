@@ -25,8 +25,6 @@ variable "aws_region" {
   type        = string
 }
 
-<<<<<<< HEAD
-=======
 variable "security_group" {
   description = "Security Group for Elastic Beanstalk instances"
   type        = string
@@ -34,20 +32,16 @@ variable "security_group" {
 
 }
 
->>>>>>> test
 variable "public_subnets" {
   description = "List of public subnet CIDR blocks"
   type        = list(string)
 }
 
-<<<<<<< HEAD
-=======
 variable "private_subnets" {
   description = "List of private subnet CIDR blocks"
   type        = list(string)
 }
 
->>>>>>> test
 variable "vpc_id" {
   description = "ID of the VPC where Elastic Beanstalk will be deployed"
   type        = string
@@ -61,10 +55,6 @@ variable "subnet_ids" {
 variable "s3_access_policy_arn" {
   description = "ARN of the S3 access policy to attach to Elastic Beanstalk instance role"
   type        = string
-<<<<<<< HEAD
-  default     = ""
-}
-=======
   default     = "null"
 }
 
@@ -100,4 +90,3 @@ variable "aws_s3_object_key" {
   description = "Key of the uploaded S3 object (application artifact)"
   type        = string
 }
->>>>>>> test

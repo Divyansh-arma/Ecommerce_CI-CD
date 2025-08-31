@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-# E-commerce_CI-CD
-Implementing DevOps practices for continuous integration and deployment.
-https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/8626787b-7791-4fe3-99e8-f41f30ba370d.png<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/f424ad9d-4523-4b9f-b0d9-c1768d6886b3" />
-=======
 # E-commerce Infrastructure with Terraform
 
 [![Terraform](https://img.shields.io/badge/Terraform-v1.0+-623CE4?logo=terraform)](https://terraform.io)
@@ -304,7 +299,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 For questions or issues:
 - Create an issue in this repository
-- Contact: [Your contact information]
+- Contact: sharmadivyansh003@gmail.com
 
 ## 🙏 Acknowledgments
 
@@ -315,4 +310,3 @@ For questions or issues:
 ---
 
 **Note**: This infrastructure is designed for educational and development purposes. For production use, additional security hardening and monitoring should be implemented.
->>>>>>> test

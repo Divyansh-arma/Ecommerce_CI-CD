@@ -1,9 +1,5 @@
 # Root variables for the entire infrastructure
-<<<<<<< HEAD
-
-=======
 # EC2 Module Variables
->>>>>>> test
 variable "aws_region" {
   description = "AWS region for resources"
   type        = string
@@ -22,8 +18,6 @@ variable "project_name" {
   default     = "e-commerce"
 }
 
-<<<<<<< HEAD
-=======
 variable "access_key" {
   description = "Access key for AWS account"
   type        = string
@@ -34,7 +28,6 @@ variable "secret_key" {
   type        = string
 }
 
->>>>>>> test
 # VPC Variables
 variable "vpc_name" {
   description = "Name of the VPC"
@@ -42,15 +35,6 @@ variable "vpc_name" {
   default     = "ecommerce-vpc"
 }
 
-<<<<<<< HEAD
-variable "vpc_id" {
-  description = "VPC ID where the security group will be created"
-  type        = string
-
-}
-
-=======
->>>>>>> test
 variable "vpc_cidr" {
   description = "CIDR block for VPC"
   type        = string
@@ -60,19 +44,11 @@ variable "vpc_cidr" {
 variable "public_subnets" {
   description = "List of public subnet CIDR blocks"
   type        = list(string)
-<<<<<<< HEAD
-  default     = ["10.0.1.0/24"]
-=======
->>>>>>> test
 }
 
 variable "private_subnets" {
   description = "List of private subnet CIDR blocks"
   type        = list(string)
-<<<<<<< HEAD
-  default     = ["10.0.2.0/24"]
-=======
->>>>>>> test
 }
 
 # EC2 Variables
@@ -98,11 +74,7 @@ variable "key_name" {
 variable "bucket_name" {
   description = "Name of the S3 bucket for static files"
   type        = string
-<<<<<<< HEAD
-  default     = "myapp-bucket"
-=======
   default     = "karma-ecommerce-bucket"
->>>>>>> test
 }
 
 # Common Tags Variable
@@ -123,9 +95,7 @@ variable "elastic_beanstalk_app_name" {
   description = "Name of the Elastic Beanstalk Application"
   type        = string
   default     = "beanstalk-app"
-
 }
-
 variable "elastic_beanstalk_env_name" {
   description = "Name of the Elastic Beanstalk Environment"
   type        = string
@@ -140,8 +110,6 @@ variable "elastic_beanstalk_solution_stack" {
 
 }
 
-<<<<<<< HEAD
-=======
 variable "security_group" {
   description = "Security Group for Elastic Beanstalk instances"
   type        = string
@@ -149,7 +117,6 @@ variable "security_group" {
 
 }
 
->>>>>>> test
 # RDS Configuration
 variable "db_identifier" {
   description = "RDS instance identifier"

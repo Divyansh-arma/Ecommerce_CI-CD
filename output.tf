@@ -11,14 +11,11 @@ output "private_subnets" {
   value       = module.vpc.private_subnets
 }
 
-<<<<<<< HEAD
-=======
 output "vpc_id" {
   description = "ID of the VPC"
   value       = module.vpc.vpc_id
 }
 
->>>>>>> test
 # EC2 Outputs
 output "ec2_instance_id" {
   description = "ID of the EC2 instance"
@@ -35,23 +32,8 @@ output "ec2_private_ip" {
   value       = module.ec2.instance_private_ip
 }
 
-<<<<<<< HEAD
-# # SSH Connection Info
-# output "ssh_connection" {
-#   description = "SSH connection command"
-#   value       = "ssh -i ~/.ssh/${var.key_name} ubuntu@${module.ec2.instance_public_ip}"
-# }
-
-# S3 Outputs
-# output "bucket_name" {
-#   description = "Name of the S3 bucket for static files"
-#   value       = module.s3.bucket_name
-
-# }
-=======
 # RDS Outputs
 output "db_instance_endpoint" {
   description = "RDS instance endpoint"
   value       = module.rds.db_instance_endpoint
 }
->>>>>>> test

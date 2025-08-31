@@ -5,17 +5,10 @@ variable "vpc_name" {
   type        = string
 }
 
-<<<<<<< HEAD
-variable "vpc_id" {
-  description = "VPC ID where the security group will be created"
-  type        = string
-}
-=======
 # variable "vpc_id" {
 #   description = "VPC ID where the security group will be created"
 #   type        = string
 # }
->>>>>>> test
 
 variable "vpc_cidr" {
   description = "CIDR block for VPC"
@@ -25,19 +18,11 @@ variable "vpc_cidr" {
 variable "public_subnets" {
   description = "List of public subnet CIDR blocks"
   type        = list(string)
-<<<<<<< HEAD
-=======
-
->>>>>>> test
 }
 
 variable "private_subnets" {
   description = "List of private subnet CIDR blocks"
   type        = list(string)
-<<<<<<< HEAD
-=======
-
->>>>>>> test
 }
 
 variable "tags" {
