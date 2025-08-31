@@ -37,7 +37,6 @@ This project creates a complete AWS infrastructure for an e-commerce application
 ├── output.tf                  # Output values
 ├── provider.tf               # AWS provider configuration
 ├── README.md                 # This file
-├── application-config-examples.md
 └── modules/
     ├── vpc/                  # VPC module
     │   ├── main.tf
