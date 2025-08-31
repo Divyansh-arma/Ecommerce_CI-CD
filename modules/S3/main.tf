@@ -21,6 +21,13 @@ module "s3_bucket" {
 
 }
 
+resource "aws_s3_object" "artifact" {
+  bucket = module.s3_bucket.s3_bucket_id
+  key    = "ecommerce.zip"
+  source = "${path.module}/ecommerce.zip"
+  etag   = filemd5("${path.module}/ecommerce.zip")
+}
+
 # IAM policy so Elastic Beanstalk EC2 instances can access this bucket
 resource "aws_iam_policy" "s3_access" {
   name        = "eb-s3-access-prod"

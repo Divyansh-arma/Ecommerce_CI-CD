@@ -8,7 +8,12 @@ output "aws_iam_instance_profile" {
   value       = aws_iam_instance_profile.eb_instance_profile.name
 }
 
+output "security_group" {
+  description = "Security Group for EB instances"
+  value       = var.security_group
+}
+
 output "security_group_id" {
-  description = "Security Group ID for EB instances"
-  value       = module.elastic_beanstalk_env.security_group_id
+  description = "ID of the security group"
+  value       = aws_security_group.eb_sg.id
 }

@@ -44,13 +44,11 @@ variable "vpc_cidr" {
 variable "public_subnets" {
   description = "List of public subnet CIDR blocks"
   type        = list(string)
-  default     = ["10.0.1.0/24", "10.0.3.0/24"]
 }
 
 variable "private_subnets" {
   description = "List of private subnet CIDR blocks"
   type        = list(string)
-  default     = ["10.0.2.0/24", "10.0.4.0/24"]
 }
 
 # EC2 Variables
@@ -76,7 +74,7 @@ variable "key_name" {
 variable "bucket_name" {
   description = "Name of the S3 bucket for static files"
   type        = string
-  default     = "ecommerce-bucket"
+  default     = "karma-ecommerce-bucket"
 }
 
 # Common Tags Variable
@@ -111,6 +109,13 @@ variable "elastic_beanstalk_solution_stack" {
   description = "Solution stack for the Elastic Beanstalk Environment"
   type        = string
   default     = "64bit Amazon Linux 2 v3.5.7 running Docker"
+
+}
+
+variable "security_group" {
+  description = "Security Group for Elastic Beanstalk instances"
+  type        = string
+  default     = "eb-sg"
 
 }
 

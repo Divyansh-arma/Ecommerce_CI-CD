@@ -1,32 +1,89 @@
-#  Elastic Beanstalk Application
-module "elastic_beanstalk_app" {
-  source  = "cloudposse/elastic-beanstalk-application/aws"
-  version = "0.12.1"
-  name        = "beanstalk-app"
-  description = "Elastic Beanstalk Application for sample e-commerce"
+# EB Application
+resource "aws_elastic_beanstalk_application" "app" {
+  name        = "ecommerce-app"
+  description = "E-commerce web application"
 }
 
-# Elastic Beanstalk Environment
-module "elastic_beanstalk_env" {
-  source  = "cloudposse/elastic-beanstalk-environment/aws"
-  region  = var.aws_region
-  version = "0.41.0"
-  application_subnets = var.public_subnets
-  elastic_beanstalk_application_name  = module.elastic_beanstalk_app.elastic_beanstalk_application_name
-  solution_stack_name = "64bit Amazon Linux 2 v3.5.7 running Docker"
+# EB Application Version (sample zip in S3)
+resource "aws_elastic_beanstalk_application_version" "app_version" {
+  name        = "v1"
+  application = aws_elastic_beanstalk_application.app.name
+  description = "Initial version"
+  bucket      = var.bucket_name
+  key        = var.aws_s3_object_key
+}
 
-  # Networking
-  vpc_id     = var.vpc_id
+# EB Environment
+resource "aws_elastic_beanstalk_environment" "env" {
+  name                = "ecommerce-env"
+  application         = aws_elastic_beanstalk_application.app.name
+  solution_stack_name = "64bit Amazon Linux 2023 v4.7.1 running Python 3.13"
+  tier                = "WebServer"
+  
+  # attach the app version
+  version_label       = aws_elastic_beanstalk_application_version.app_version.name
 
-  # EC2 settings
-  instance_type          = "t3.micro"
-  associate_public_ip_address = true
+  # IAM roles
+  setting {
+    namespace = "aws:autoscaling:launchconfiguration"
+    name      = "IamInstanceProfile"
+    value     = aws_iam_instance_profile.eb_instance_profile.name
 
-  # Load balancer type
-  loadbalancer_type = "application"
+  }
+  setting {
+    namespace = "aws:elasticbeanstalk:environment"
+    name      = "ServiceRole"
+    value     = aws_iam_role.eb_instance_role.name
+  }
 
-  tags = {
-    Environment = "prod"
-    Project     = "ecommerce"
+  setting {
+    namespace = "aws:ec2:vpc"
+    name      = "VPCId"
+    value     = var.vpc_id
+  }
+
+  setting {
+    namespace = "aws:ec2:vpc"
+    name      = "Subnets"
+    value     = join(",", var.private_subnets)
+  }
+
+  setting {
+    namespace = "aws:ec2:vpc"
+    name      = "ELBSubnets"
+    value     = join(",", var.public_subnets)
+  }
+
+  # Security group for EB instances
+  setting {
+    namespace = "aws:autoscaling:launchconfiguration"
+    name      = "SecurityGroups"
+    value     = aws_security_group.eb_sg.id
+  }
+
+  # DB connectivity (your RDS is private, so pass hostname/endpoint via env vars)
+  setting {
+    namespace = "aws:elasticbeanstalk:application:environment"
+    name      = "DB_HOST"
+    value     = var.db_instance_endpoint
+  }
+
+  setting {
+    namespace = "aws:elasticbeanstalk:application:environment"
+    name      = "DB_USER"
+    value     = var.db_username
+  }
+
+  setting {
+    namespace = "aws:elasticbeanstalk:application:environment"
+    name      = "DB_PASSWORD"
+    value     = var.db_password
+  }
+
+  # S3 for static files
+  setting {
+    namespace = "aws:elasticbeanstalk:application:environment"
+    name      = "STATIC_BUCKET"
+    value     = var.bucket_name
   }
 }

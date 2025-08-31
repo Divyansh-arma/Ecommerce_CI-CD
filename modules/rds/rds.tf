@@ -61,12 +61,12 @@ module "db" {
   enabled_cloudwatch_logs_exports = ["error", "general", "slowquery"]
 
   # Performance Insights
-  performance_insights_enabled = true
+  performance_insights_enabled = false
   performance_insights_retention_period = 7
 
   # Security configuration
   deletion_protection       = false
-  skip_final_snapshot       = false
+  skip_final_snapshot       = true
   final_snapshot_identifier_prefix = "${var.db_identifier}-final-snapshot"
 
   # DB parameter group

@@ -12,3 +12,9 @@ output "s3_access_policy_arn" {
   description = "ARN of the IAM policy for S3 access - attach this to EC2/EB instance roles"
   value       = aws_iam_policy.s3_access.arn
 }
+
+output "aws_s3_object_key" {
+  description = "Key of the uploaded S3 object (application artifact)"
+  value       = aws_s3_object.artifact.key
+  
+}

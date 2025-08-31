@@ -37,8 +37,12 @@ module "s3" {
 
 # EB Module
 module "eb" {
-  source = "./modules/EB"
-
+  source                           = "./modules/EB"
+  bucket_name                      = var.bucket_name
+  db_name                          = var.db_name
+  db_username                      = var.db_username
+  db_password                      = var.db_password
+  db_instance_endpoint             = module.rds.db_instance_endpoint
   aws_region                       = var.aws_region
   elastic_beanstalk_app_name       = var.elastic_beanstalk_app_name
   elastic_beanstalk_env_name       = var.elastic_beanstalk_env_name
@@ -46,10 +50,11 @@ module "eb" {
   vpc_id                           = module.vpc.vpc_id
   subnet_ids                       = module.vpc.public_subnets
   public_subnets                   = module.vpc.public_subnets
+  private_subnets                  = module.vpc.private_subnets
   s3_access_policy_arn             = module.s3.s3_access_policy_arn
+  aws_s3_object_key = module.s3.aws_s3_object_key
   tags                             = var.common_tags
-
-  depends_on = [module.vpc, module.s3]
+  depends_on                       = [module.vpc, module.s3]
 }
 
 # RDS Module
@@ -77,5 +82,5 @@ module "rds" {
   # Common tags
   tags = var.common_tags
 
-  depends_on = [module.vpc, module.ec2]
+  depends_on = [module.vpc, module.ec2, module.s3]
 }

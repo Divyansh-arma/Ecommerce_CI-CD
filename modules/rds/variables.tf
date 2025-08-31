@@ -31,20 +31,17 @@ variable "db_identifier" {
 variable "db_name" {
   description = "Name of the database"
   type        = string
-  default     = "ecommerce"
 }
 
 variable "db_username" {
   description = "Database username"
   type        = string
-  default     = "admin"
 }
 
 variable "db_password" {
   description = "Database password"
   type        = string
   sensitive   = true
-  default     = "changeme123!"
 }
 
 variable "instance_class" {
@@ -68,8 +65,10 @@ variable "engine_version" {
 variable "major_engine_version" {
   description = "MySQL major engine version"
   type        = string
-  default     = "8"
+  default     = "8.0"
 }
+
+
 
 variable "tags" {
   description = "Tags to apply to RDS resources"
