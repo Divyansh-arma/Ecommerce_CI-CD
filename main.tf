@@ -2,8 +2,13 @@
 
 # VPC Module
 module "vpc" {
+<<<<<<< HEAD
   source          = "./modules/vpc"
   vpc_id          = module.vpc.vpc_id
+=======
+  source = "./modules/vpc"
+  # vpc_id          = module.vpc.vpc_id
+>>>>>>> test
   vpc_name        = var.vpc_name
   vpc_cidr        = var.vpc_cidr
   public_subnets  = var.public_subnets
@@ -14,12 +19,22 @@ module "vpc" {
 
 # EC2 Module
 module "ec2" {
+<<<<<<< HEAD
   source = "./modules/ec2"
 
   instance_name   = var.instance_name
   instance_type   = var.instance_type
   key_name        = var.key_name
   public_key_path = "/Users/divyansh/Documents/DevOps/devops projects/E-commerce_CI-CD/ec2_key.pub"
+=======
+  source          = "./modules/ec2"
+  access_key      = var.access_key
+  secret_key      = var.secret_key
+  instance_name   = var.instance_name
+  instance_type   = var.instance_type
+  key_name        = var.key_name
+  public_key_path = "/Users/divyansh/Documents/DevOps/Pem-Keys/Ecommerce-keys/ec2-key.pub"
+>>>>>>> test
   subnet_id       = module.vpc.public_subnets[0]
   vpc_id          = module.vpc.vpc_id
 
@@ -36,8 +51,17 @@ module "s3" {
 
 # EB Module
 module "eb" {
+<<<<<<< HEAD
   source = "./modules/EB"
 
+=======
+  source                           = "./modules/EB"
+  bucket_name                      = var.bucket_name
+  db_name                          = var.db_name
+  db_username                      = var.db_username
+  db_password                      = var.db_password
+  db_instance_endpoint             = module.rds.db_instance_endpoint
+>>>>>>> test
   aws_region                       = var.aws_region
   elastic_beanstalk_app_name       = var.elastic_beanstalk_app_name
   elastic_beanstalk_env_name       = var.elastic_beanstalk_env_name
@@ -45,10 +69,18 @@ module "eb" {
   vpc_id                           = module.vpc.vpc_id
   subnet_ids                       = module.vpc.public_subnets
   public_subnets                   = module.vpc.public_subnets
+<<<<<<< HEAD
   s3_access_policy_arn             = module.s3.s3_access_policy_arn
   tags                             = var.common_tags
 
   depends_on = [module.vpc, module.s3]
+=======
+  private_subnets                  = module.vpc.private_subnets
+  s3_access_policy_arn             = module.s3.s3_access_policy_arn
+  aws_s3_object_key                = module.s3.aws_s3_object_key
+  tags                             = var.common_tags
+  depends_on                       = [module.vpc, module.s3]
+>>>>>>> test
 }
 
 # RDS Module
@@ -61,8 +93,13 @@ module "rds" {
 
   # Security Configuration - Allow access from EC2 and EB instances
   allowed_security_groups = [
+<<<<<<< HEAD
     module.ec2.security_group_id
     # module.eb.security_group_id  # Add when EB module outputs security group
+=======
+    module.ec2.security_group_id,
+    module.eb.security_group_id
+>>>>>>> test
   ]
 
   # Database Configuration
@@ -76,5 +113,9 @@ module "rds" {
   # Common tags
   tags = var.common_tags
 
+<<<<<<< HEAD
   depends_on = [module.vpc, module.ec2]
+=======
+  depends_on = [module.vpc, module.ec2, module.s3]
+>>>>>>> test
 }

@@ -19,7 +19,11 @@ variable "key_name" {
 variable "public_key_path" {
   description = "Path to the public key file"
   type        = string
+<<<<<<< HEAD
   default     = "/Users/divyansh/Documents/DevOps/devops projects/E-commerce_CI-CD/ec2_key.pub"
+=======
+  default     = "/Users/divyansh/Documents/DevOps/Pem-Keys/Ecommerce-keys/ec2-key.pub"
+>>>>>>> test
 }
 
 variable "subnet_id" {
@@ -36,4 +40,17 @@ variable "tags" {
   description = "Tags to apply to all resources"
   type        = map(string)
   default     = {}
+<<<<<<< HEAD
+=======
+}
+
+variable "access_key" {
+  description = "Access key for AWS account"
+  type        = string
+}
+
+variable "secret_key" {
+  description = "Secret key for AWS account"
+  type        = string
+>>>>>>> test
 }

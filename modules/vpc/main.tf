@@ -12,7 +12,11 @@ module "vpc" {
   name = var.vpc_name
   cidr = var.vpc_cidr
 
+<<<<<<< HEAD
   azs             = [data.aws_availability_zones.available.names[0]]
+=======
+  azs             = slice(data.aws_availability_zones.available.names, 0, 2)
+>>>>>>> test
   private_subnets = var.private_subnets
   public_subnets  = var.public_subnets
 

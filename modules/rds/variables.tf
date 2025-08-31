@@ -31,20 +31,29 @@ variable "db_identifier" {
 variable "db_name" {
   description = "Name of the database"
   type        = string
+<<<<<<< HEAD
   default     = "ecommerce"
+=======
+>>>>>>> test
 }
 
 variable "db_username" {
   description = "Database username"
   type        = string
+<<<<<<< HEAD
   default     = "admin"
+=======
+>>>>>>> test
 }
 
 variable "db_password" {
   description = "Database password"
   type        = string
   sensitive   = true
+<<<<<<< HEAD
   default     = "changeme123!"
+=======
+>>>>>>> test
 }
 
 variable "instance_class" {
@@ -65,6 +74,17 @@ variable "engine_version" {
   default     = "8.0"
 }
 
+<<<<<<< HEAD
+=======
+variable "major_engine_version" {
+  description = "MySQL major engine version"
+  type        = string
+  default     = "8.0"
+}
+
+
+
+>>>>>>> test
 variable "tags" {
   description = "Tags to apply to RDS resources"
   type        = map(string)

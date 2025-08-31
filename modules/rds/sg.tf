@@ -1,5 +1,9 @@
 resource "aws_security_group" "rds_sg" {
+<<<<<<< HEAD
   name        = "${var.db_identifier}-rds-sg"
+=======
+  name        = "rds-sg"
+>>>>>>> test
   description = "Security group for RDS MySQL database"
   vpc_id      = var.vpc_id
 

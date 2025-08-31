@@ -3,7 +3,10 @@
 output "db_instance_endpoint" {
   description = "RDS instance endpoint"
   value       = module.db.db_instance_endpoint
+<<<<<<< HEAD
   sensitive   = true
+=======
+>>>>>>> test
 }
 
 output "db_instance_port" {
@@ -47,3 +50,23 @@ output "db_security_group_id" {
   description = "RDS security group ID"
   value       = aws_security_group.rds_sg.id
 }
+<<<<<<< HEAD
+=======
+
+output "db_name" {
+  description = "Database name"
+  value       = var.db_name
+}
+
+output "db_username" {
+  description = "Database username"
+  value       = var.db_username
+  sensitive   = true
+}
+
+output "db_password" {
+  description = "Databse password"
+  value = var.db_password
+  sensitive = true
+}
+>>>>>>> test

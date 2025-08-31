@@ -16,7 +16,12 @@ module "db" {
 
   # Engine configuration
   engine               = "mysql"
+<<<<<<< HEAD
   engine_version       = var.engine_version
+=======
+  major_engine_version = var.major_engine_version
+  engine_version      = var.engine_version
+>>>>>>> test
   instance_class       = var.instance_class
   
   # Storage configuration
@@ -57,15 +62,26 @@ module "db" {
   monitoring_role_name   = "${var.db_identifier}-RDSMonitoringRole"
   create_monitoring_role = true
   
+<<<<<<< HEAD
   enabled_cloudwatch_logs_exports = ["error", "general", "slow_query"]
 
   # Performance Insights
   performance_insights_enabled = true
+=======
+  enabled_cloudwatch_logs_exports = ["error", "general", "slowquery"]
+
+  # Performance Insights
+  performance_insights_enabled = false
+>>>>>>> test
   performance_insights_retention_period = 7
 
   # Security configuration
   deletion_protection       = false
+<<<<<<< HEAD
   skip_final_snapshot       = false
+=======
+  skip_final_snapshot       = true
+>>>>>>> test
   final_snapshot_identifier_prefix = "${var.db_identifier}-final-snapshot"
 
   # DB parameter group
