@@ -20,7 +20,7 @@ module "ec2" {
   instance_name   = var.instance_name
   instance_type   = var.instance_type
   key_name        = var.key_name
-  public_key_path = "terraform/keys/"
+  public_key_path = "keys/ec2-key.pub"
   subnet_id       = module.vpc.public_subnets[0]
   vpc_id          = module.vpc.vpc_id
 
