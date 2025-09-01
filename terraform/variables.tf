@@ -44,11 +44,13 @@ variable "vpc_cidr" {
 variable "public_subnets" {
   description = "List of public subnet CIDR blocks"
   type        = list(string)
+  default     = ["10.0.1.0/24", "10.0.3.0/24"]
 }
 
 variable "private_subnets" {
   description = "List of private subnet CIDR blocks"
   type        = list(string)
+  default     = ["10.0.2.0/24", "10.0.4.0/24"]
 }
 
 # EC2 Variables
@@ -135,14 +137,12 @@ variable "db_name" {
 variable "db_username" {
   description = "Database username"
   type        = string
-  default     = "admin"
 }
 
 variable "db_password" {
   description = "Database password"
   type        = string
   sensitive   = true
-  default     = "changeme123!"
 }
 
 variable "db_instance_class" {
