@@ -19,7 +19,7 @@ variable "key_name" {
 variable "public_key_path" {
   description = "Path to the public key file"
   type        = string
-  default     = "terraform/keys/ec2-key.pub"
+  default     = "terraform/keys/"
 }
 
 variable "subnet_id" {
