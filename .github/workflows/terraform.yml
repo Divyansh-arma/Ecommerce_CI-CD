@@ -1,4 +1,4 @@
-name: "Ecommerce-app"
+name: "Ecommerce-app-Terraform"
 on:
   push:
     branches:
