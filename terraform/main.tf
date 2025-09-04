@@ -43,6 +43,8 @@ module "eb" {
   db_username                      = var.db_username
   db_password                      = var.db_password
   db_instance_endpoint             = module.rds.db_instance_endpoint
+  db_instance_address              = module.rds.db_instance_address
+  db_instance_port                 = module.rds.db_instance_port
   aws_region                       = var.aws_region
   elastic_beanstalk_app_name       = var.elastic_beanstalk_app_name
   elastic_beanstalk_env_name       = var.elastic_beanstalk_env_name
