@@ -90,6 +90,6 @@ resource "aws_elastic_beanstalk_environment" "env" {
   setting {
     namespace = "aws:elasticbeanstalk:application:environment"
     name      = "DATABASE_URL"
-    value     = "mysql+pymysql://${var.db_username}:${var.db_password}@${module.db.db_instance_address}:${module.db.db_instance_port}/${var.db_name}"
+    value     = "mysql+pymysql://${var.db_username}:${var.db_password}@${var.db_instance_address}:${var.db_instance_port}/${var.db_name}"
   }
 }

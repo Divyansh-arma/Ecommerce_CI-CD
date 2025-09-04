@@ -86,6 +86,18 @@ variable "db_instance_endpoint" {
   
 }
 
+variable "db_instance_address" {
+  description = "RDS instance address"
+  type        = string
+  
+}
+
+variable "db_instance_port" {
+  description = "RDS instance port"
+  type        = string
+  
+}
+
 variable "aws_s3_object_key" {
   description = "Key of the uploaded S3 object (application artifact)"
   type        = string
