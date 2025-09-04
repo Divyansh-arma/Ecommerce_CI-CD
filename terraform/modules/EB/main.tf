@@ -86,4 +86,10 @@ resource "aws_elastic_beanstalk_environment" "env" {
     name      = "STATIC_BUCKET"
     value     = var.bucket_name
   }
+
+  setting {
+    namespace = "aws:elasticbeanstalk:application:environment"
+    name      = "DATABASE_URL"
+    value     = "mysql+pymysql://${var.db_username}:${var.db_password}@${module.db.db_instance_address}:${module.db.db_instance_port}/${var.db_name}"
+  }
 }
