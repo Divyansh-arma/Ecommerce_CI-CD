@@ -87,6 +87,12 @@ resource "aws_elastic_beanstalk_environment" "env" {
     value     = var.bucket_name
   }
 
+#   setting {
+#   namespace = "aws:elasticbeanstalk:hostmanager"
+#   name      = "AppSourceS3Bucket"
+#   value     = 
+# }
+
   setting {
     namespace = "aws:elasticbeanstalk:application:environment"
     name      = "DATABASE_URL"
