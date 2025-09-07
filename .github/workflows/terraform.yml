@@ -6,11 +6,13 @@ on:
       - test
     paths:
       - terraform/**
+      - ecommerce-app/**
   pull_request:
     branches:
       - main
     paths:
       - terraform/**
+      - ecommerce-app/**
 
 env:
   AWS_REGION: "us-east-1"
@@ -64,3 +66,43 @@ jobs:
               id: terraform_apply
               if: github.ref == 'refs/heads/main' && github.event_name == 'push'
               run: terraform apply -auto-approve -input=false -parallelism=1 tfplan
+
+    Build_and_Deploy:
+      name: "Build and Deploy Application"
+      runs-on: ubuntu-latest
+      defaults:
+          run:
+            shell: bash
+
+      steps:
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt pytest
+        working-directory: ecommerce-app/
+
+      - name: Run tests
+        run: pytest --junitxml=reports/test-results.xml
+        working-directory: ecommerce-app/
+
+      - name: Package the application
+        run: zip -r ecommerce-app.zip . -x "*.git*" "tests/*" "*.pytest_cache*" "*.DS_Store"
+        working-directory: ecommerce-app/
+
+      - name: Upload artifact
+        uses: einaregilsson/beanstalk-deploy@v20
+        with:
+          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          application_name: ecommerce-app
+          environment_name: "ecommerce-env"
+          version_label: ${{ github.sha }}
+          region: "us-east-1"
+          deployment_package: "ecommerce-app/ecommerce-app.zip"
