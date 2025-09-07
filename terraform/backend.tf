@@ -1,6 +1,6 @@
 terraform {
   backend "s3" {
-    bucket         = "eccommerce-infra"
+    bucket         = "karma-tf-state"
     key            = "terraform/terraform.tfstate"
     region         = "us-east-1"
     dynamodb_table = "terraform-locks"
