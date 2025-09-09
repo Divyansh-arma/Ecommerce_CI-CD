@@ -33,6 +33,7 @@ module "db" {
   port     = "3306"
 
   iam_database_authentication_enabled = true
+  manage_master_user_password = false
 
   # Network configuration
   vpc_security_group_ids = [aws_security_group.rds_sg.id]
