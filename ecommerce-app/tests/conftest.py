@@ -8,7 +8,7 @@ from app import create_app, db
 from app.models import User, Category, Product
 
 
-@pytest.fixture(scope='session')
+@pytest.fixture(scope='function')  # Changed from 'session' to 'function'
 def app():
     """Create application for the tests."""
     # Create a temporary file to use as the database
@@ -27,6 +27,7 @@ def app():
     with app.app_context():
         db.create_all()
         yield app
+        db.session.remove()  # Clean up session
         db.drop_all()
     
     os.close(db_fd)
