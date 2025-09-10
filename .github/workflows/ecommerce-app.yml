@@ -43,7 +43,7 @@ jobs:
                 run: pip install -r requirements.txt pytest
 
               - name: Run tests
-                run: pytest --junitxml=reports/test-results.xml
+                run: pytest tests/ --junitxml=reports/test-results.xml
 
               - name: Package the application
                 run: zip -r ecommerce-app.zip . -x "*.git*" "tests/*" "*.pytest_cache*" "*.DS_Store"
