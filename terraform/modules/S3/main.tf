@@ -23,8 +23,8 @@ module "s3_bucket" {
 
 resource "aws_s3_object" "artifact" {
   bucket = module.s3_bucket.s3_bucket_id
-  key    = "ecommerce.zip"
-  source = "${path.module}/ecommerce.zip"
+  key    = "ecommerce-app.zip"
+  source = "${path.module}/ecommerce-app.zip"
   etag   = filemd5("${path.module}/ecommerce-app.zip")
 }
 
