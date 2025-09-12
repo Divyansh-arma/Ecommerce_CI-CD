@@ -22,6 +22,12 @@ resource "aws_elastic_beanstalk_environment" "env" {
   
   # attach the app version
   version_label       = aws_elastic_beanstalk_application_version.app_version.name
+  
+  setting {
+    namespace = "aws:elasticbeanstalk:command"
+    name      = "Timeout"
+    value     = "1200"  #(20 minutes)
+  }
 
   # IAM roles
   setting {
