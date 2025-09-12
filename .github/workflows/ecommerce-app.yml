@@ -57,4 +57,4 @@ jobs:
                     environment_name: "ecommerce-env"
                     version_label: ${{ github.sha }}
                     region: "us-east-1"
-                    deployment_package: "ecommerce-app.zip"
+                    deployment_package: "ecommerce-app/ecommerce-app.zip"
