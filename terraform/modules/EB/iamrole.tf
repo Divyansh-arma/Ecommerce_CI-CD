@@ -9,6 +9,7 @@ resource "aws_iam_role" "eb_instance_role" {
         Effect = "Allow"
         Principal = {
           Service = "ec2.amazonaws.com"
+          Service = "elasticbeanstalk.amazonaws.com"
         }
         Action = "sts:AssumeRole"
       }
