@@ -39,7 +39,7 @@ resource "aws_elastic_beanstalk_environment" "env" {
   setting {
     namespace = "aws:elasticbeanstalk:environment"
     name      = "ServiceRole"
-    value     = aws_iam_role.eb_instance_role.name
+    value     = aws_iam_role.eb_service_role.name
   }
 
   setting {
