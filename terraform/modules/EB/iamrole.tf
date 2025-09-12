@@ -35,6 +35,10 @@ resource "aws_iam_role_policy_attachment" "eb_worker_tier" {
 resource "aws_iam_role_policy_attachment" "eb_s3_access" {
   # for_each   = var.s3_access_policy_arn != null && var.s3_access_policy_arn != "" ? toset(["attach"]) : toset([])
   #count      = length(trimspace(var.s3_access_policy_arn)) > 0 ? 1 : 0
+  for_each = toset([
+    "arn:aws:iam::aws:policy/AWSElasticBeanstalkWebTier",
+    "arn:aws:iam::aws:policy/AWSElasticBeanstalkWorkerTier",
+  ])
   role       = aws_iam_role.eb_instance_role.name
-  policy_arn = var.s3_access_policy_arn
+  policy_arn = each.value
 }
